@@ -2,7 +2,7 @@
 
 require_relative "actionjdjackson_palindrome/version"
 
-class String
+module ActionjdjacksonPalindrome
 
   def palindrome?
     processed_content == processed_content.reverse
@@ -11,7 +11,15 @@ class String
   private
 
     def processed_content
-      self.scan(/[a-z]/i).join.downcase
+      to_s.scan(/[a-z0-9]/i).join.downcase
     end
 
+end
+
+class String
+  include ActionjdjacksonPalindrome
+end
+
+class Integer
+  include ActionjdjacksonPalindrome
 end
